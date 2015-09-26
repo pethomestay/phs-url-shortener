@@ -1,0 +1,31 @@
+<%= form_for(@url_short, class: "form-horizontal") do |f| %>
+  <div class="form-group">
+    <% if @url_short.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@url_short.errors.count, "error") %> prohibited this url_short from being saved:</h2>
+
+        <ul>
+        <% @url_short.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <%= f.label :code %><br>
+        <%= f.text_field :code, class: "form-control" %>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <%= f.label :end_point %><br>
+        <%= f.text_field :end_point, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+    <br>
+      <div class="col-xs-12">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

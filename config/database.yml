@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  pool: 25
+  timeout: 5000
+  host: localhost
+
+local: &local
+  username: <%= ENV['DB_USERNAME_LOCAL'] %>
+  password: <%= ENV['DB_PASSWORD_LOCAL'] %>
+  port: <%= ENV['DB_PORT_LOCAL'] %>
+  encoding: utf8
+
+development:
+  <<: *default
+  database: phs_short_dev
+  <<: *local
+
+production:
+  <<: *default
+  database: phs_short
+  username:  <%= ENV['DB_USERNAME'] %>
+  password:  <%= ENV['DB_PASSWORD'] %>
